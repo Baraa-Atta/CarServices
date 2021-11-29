@@ -1,0 +1,6 @@
+reservation:
+  host: ${CAR_RESERVATION_HOST}
+  port: 8082
+details:
+  host: ${CAR_DETAILS_HOST}
+  port: 8084

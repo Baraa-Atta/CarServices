@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: car-service
+  namespace: car-mircoservices-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      car: service
+  template:
+    metadata:
+      labels:
+        car: service
+    spec:
+      containers:
+        - name: cs
+          image: carservice:1
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          env:
+            - name: CAR_RESERVATION_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: config
+                  key: reservationHost
+            - name: CAR_DETAILS_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: config
+                  key: detailsHost
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: car-service
+  namespace: car-mircoservices-app
+  labels:
+    car: service
+spec:
+  selector:
+    car: service
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

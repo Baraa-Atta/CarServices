@@ -1,0 +1,3 @@
+com\example\cardetails\models\Car.class
+com\example\cardetails\CarDetailsApplication.class
+com\example\cardetails\controllers\CarDetailsApi.class

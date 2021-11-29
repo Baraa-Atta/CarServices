@@ -1,0 +1,39 @@
+{
+  "groups": [
+    {
+      "name": "details",
+      "type": "com.example.carservice.config.DetailsConfig",
+      "sourceType": "com.example.carservice.config.DetailsConfig"
+    },
+    {
+      "name": "reservation",
+      "type": "com.example.carservice.config.ReservationConfig",
+      "sourceType": "com.example.carservice.config.ReservationConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "details.host",
+      "type": "java.lang.String",
+      "sourceType": "com.example.carservice.config.DetailsConfig"
+    },
+    {
+      "name": "details.port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.example.carservice.config.DetailsConfig",
+      "defaultValue": 0
+    },
+    {
+      "name": "reservation.host",
+      "type": "java.lang.String",
+      "sourceType": "com.example.carservice.config.ReservationConfig"
+    },
+    {
+      "name": "reservation.port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.example.carservice.config.ReservationConfig",
+      "defaultValue": 0
+    }
+  ],
+  "hints": []
+}

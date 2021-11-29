@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: car-details
+  namespace: car-mircoservices-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      car: details
+  template:
+    metadata:
+      labels:
+        car: details
+    spec:
+      containers:
+        - name: cd
+          image: cardetails:1
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8084
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: details-service
+  namespace: car-mircoservices-app
+  labels:
+    car: details
+spec:
+  selector:
+    car: details
+  ports:
+    - protocol: TCP
+      port: 8084
+      targetPort: 8084

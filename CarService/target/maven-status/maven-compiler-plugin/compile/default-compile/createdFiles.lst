@@ -1,0 +1,6 @@
+com\example\carservice\config\ReservationConfig.class
+com\example\carservice\controllers\CarServiceApi.class
+com\example\carservice\CarServiceApplication.class
+com\example\carservice\config\DetailsConfig.class
+META-INF\spring-configuration-metadata.json
+com\example\carservice\models\Car.class

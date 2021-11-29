@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: car-reservations
+  namespace: car-mircoservices-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      car: reservations
+  template:
+    metadata:
+      labels:
+        car: reservations
+    spec:
+      containers:
+        - name: cd
+          image: carreservations:1
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8084
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: reservations-service
+  namespace: car-mircoservices-app
+  labels:
+    car: reservations
+spec:
+  selector:
+    car: reservations
+  ports:
+    - protocol: TCP
+      port: 8082
+      targetPort: 8082
