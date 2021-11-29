@@ -1,0 +1,21 @@
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualNode
+metadata:
+  name: car-reservations-virtual-node
+  namespace: car-mircoservices-app
+spec:
+  podSelector:
+    matchLabels:
+      car: reservations
+  listeners:
+    - portMapping:
+        port: 8082
+        protocol: http
+  backends:
+    - virtualService:
+        virtualServiceRef:
+          name: reservations-virtual-service
+          namespace: car-mircoservices-app
+  serviceDiscovery:
+    dns:
+      hostname: reservations.com

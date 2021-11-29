@@ -1,0 +1,11 @@
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualService
+metadata:
+  name: details-virtual-service
+  namespace: car-mircoservices-app
+spec:
+  awsName: details.com
+  provider:
+    virtualNode:
+      virtualNodeRef:
+        name: car-details-virtual-node

@@ -1,0 +1,21 @@
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualNode
+metadata:
+  name: car-details-virtual-node
+  namespace: car-mircoservices-app
+spec:
+  podSelector:
+    matchLabels:
+      car: details
+  listeners:
+    - portMapping:
+        port: 8084
+        protocol: http
+  backends:
+    - virtualService:
+        virtualServiceRef:
+          name: details-virtual-service
+          namespace: car-mircoservices-app
+  serviceDiscovery:
+    dns:
+      hostname: details.com
